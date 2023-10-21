@@ -14,8 +14,11 @@ To get a copy of this project up and running on your local machine, follow these
 pip install requests
 ```
 4. Clone the GitHub repository containing the code.
-5. Open a terminal and navigate to the directory where the code is located.
-6. Run the program with the following command:
+```py
+git clone https://github.com/Minsukim2827/Comms-tech-test.git
+```
+6. Open a terminal and navigate to the directory where the code is located.
+7. Run the program with the following command:
 ```py
 python main.py <farm_id1> <farm_id2> ...
 ```
