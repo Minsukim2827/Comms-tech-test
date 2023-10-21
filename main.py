@@ -2,18 +2,11 @@ import requests
 import csv
 from io import StringIO
 import sys
-from typing import Dict, List, Union
+from typing import Dict, List
 
 
 class BestTowerFinder:
-    """
-    A class used to find the best tower based on the RSSI values.
-    """
     def __init__(self, url: str):
-        """
-        Constructor
-        :param url : str : the URL used to fetch the data
-        """
         self.URL = url
 
     def get_data(self) -> Dict:
@@ -32,7 +25,7 @@ class BestTowerFinder:
         """
         Fetches the CSV data from each link and filters entries based on farm_id
         :param data : Dict : the JSON response from get_data()
-        farm_id : str : the farm_id to filter entries
+        :param farm_id : str : the farm_id to filter entries
         :returns : Dict[str, List[int]] : a dictionary of tower_id and their corresponding rssi values
         """
         entries = {}
@@ -48,6 +41,9 @@ class BestTowerFinder:
             next(csv_reader)
 
             for row in csv_reader:
+                if len(row) != 3:
+                    print(f"Warning: detected a bad row: {row} from {link}")
+                    continue
                 current_farm_id = row[0]
                 if current_farm_id == farm_id:
                     tower_id = row[1]
@@ -65,13 +61,14 @@ class BestTowerFinder:
         :param entries : Dict[str, List[int]]
         :returns: the best tower id : str
         """
+        averages = {}
         for tower_id, rssi_values in entries.items():
-            entries[tower_id] = sum(rssi_values) / len(rssi_values)
+            averages[tower_id] = sum(rssi_values) / len(rssi_values)
 
         max_average_rssi = float("-inf")
         max_tower_id = ""
 
-        for tower_id, average_rssi in entries.items():
+        for tower_id, average_rssi in averages.items():
             if average_rssi > max_average_rssi:
                 max_average_rssi = average_rssi
                 max_tower_id = tower_id
@@ -99,7 +96,7 @@ def main():
 
     if len(sys.argv) > 1:
         for i in range(1, len(sys.argv)):
-            print(best_tower_finder.best_tower(sys.argv[i]))
+            print(f"the best tower for {sys.argv[i]} is {best_tower_finder.best_tower(sys.argv[i])}")
     else:
         examples = [
             "419adc09-dbbe-49fd-9c1a-c807e37b3d4f",
@@ -111,7 +108,7 @@ def main():
         print("No custom input prompt - running examples")
 
         for example in examples:
-            print(best_tower_finder.best_tower(example))
+            print(f"the best tower for {example} is {best_tower_finder.best_tower(example)}")
 
 
 if __name__ == '__main__':
