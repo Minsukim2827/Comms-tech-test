@@ -36,7 +36,7 @@ When reading the rows of some of the CSV files, i encounted some problems:
 ![image](https://github.com/Minsukim2827/Comms-tech-test/assets/122320786/a1e1fcb0-6cb9-4391-b548-d214f56028be)
 ![image](https://github.com/Minsukim2827/Comms-tech-test/assets/122320786/e1971cef-53cd-4abb-a7f1-effe313be9b9)
 
-It appears that I have incorrect permissions when accessing 2 specific files in the API, when accessing these CSV file links, I see something like this:
+It appears that I do not have the correct permissions when accessing 2 specific files in the API, when accessing these CSV file links, I see something like this:
 
 ![image](https://github.com/Minsukim2827/Comms-tech-test/assets/122320786/1cfbb9b5-cf19-43e2-82de-2b21afa6bfb4)
 
