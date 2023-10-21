@@ -14,19 +14,24 @@ To get a copy of this project up and running on your local machine, follow these
 pip install requests
 ```
 4. Clone the GitHub repository containing the code.
-```py
+```bash
 git clone https://github.com/Minsukim2827/Comms-tech-test.git
 ```
 6. Open a terminal and navigate to the directory where the code is located.
 7. Run the program with the following command:
-```py
+```bash
 python main.py <farm_id1> <farm_id2> ...
 ```
 Replace <farm_id1>, <farm_id2>, etc., with the farm IDs you want to test. If no farm IDs are provided, the program will run with a set of example farm IDs.
 
 ## Example
-```py
+```bash
 python main.py f10e802c-55a3-4407-ab6e-16cefa5fd2cc 48d3e41b-0a06-46c1-bf3c-91af704a3776 0b515fbb-2981-4f99-9141-dce1c46beb6f
+```
+
+or you can also just run the file itself, if no farm IDs are provided, the program will run with a set of example test cases
+```bash
+python main.py 
 ```
 
 ## Problems i Found while debugging
